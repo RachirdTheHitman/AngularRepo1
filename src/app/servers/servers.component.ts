@@ -10,6 +10,7 @@ export class ServersComponent implements OnInit {
   serverCreationStatus = 'No server was created!';
   serverName = 'initialName';
   serverCreated = false;
+  servers = ['testServer', 'testServer 2'];
 
 
   constructor() {
@@ -21,15 +22,15 @@ export class ServersComponent implements OnInit {
   ngOnInit() {
   }
 
+  onCreateServer() {
+    this.serverCreated = true;
+    this.servers.push(this.serverName);
+    this.serverCreationStatus = 'Server was created! Name is ' + this.serverName;
+  }
+
   onUpdateServerName(event: Event) {
     // console.log(event);
     this.serverName = (<HTMLInputElement>event.target).value;
 
   }
-
-  onCreateServer() {
-    this.serverCreated = true;
-    this.serverCreationStatus = 'Server was created and the server name is ' + this.serverName;
-  }
-
 }
